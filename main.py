@@ -4,6 +4,8 @@ from whoosh_index import *
 from word2vec_index import cerca_avanzata
 
 def main():
+    ext = True
+
     if 'download' in sys.argv:
         #SCARICA DATI DEI FILM DAL SITO www.imdb.com
         download_data_from_imdb("https://www.imdb.com/search/title/?title_type=feature&count=250")
@@ -25,13 +27,19 @@ def main():
         except:
             pass
     elif 'advanced' in sys.argv:
-        while True:
-            frase = input("Inserisci testo da ricercare:")
-            cerca_avanzata(frase, ix_imdb)
-    else:
-        while True:
+        while ext:
             frase=input("inserisci testo da ricercare:")
-            cerca(frase, ix_imdb)
+            if frase != "-q":
+                cerca_avanzata(frase, ix_imdb)
+            else:
+                ext = False
+    else:
+        while ext:
+            frase=input("inserisci testo da ricercare:")
+            if frase != "-q":
+                cerca(frase, ix_imdb)
+            else:
+                ext = False
          
 
 if __name__ == '__main__':
