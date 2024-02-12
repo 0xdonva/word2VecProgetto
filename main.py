@@ -18,16 +18,29 @@ def main():
 
     # Se è presente il flag 'benchmark' tra gli argomenti della riga di comando, esegui il benchmark
     if 'benchmark' in sys.argv:
+        num = 1
         try:
-            f = open("benchmark.txt")
-            for riga in f.readlines():
-                if "Query:" in riga:
-                    print(riga)
-                    cerca(riga[7:], ix_imdb)  # Esegue la ricerca con la query specificata nel benchmark
-                    print()
-                    print()
-        except:
-            pass
+            with open("benchmark.txt", "r") as f:
+                description = None
+                query = None
+                for line in f:
+                    if line.startswith("Descrizione:"):
+                        description = line.strip()[13:]  # Ottiene la descrizione rimuovendo "Descrizione:" dall'inizio della riga
+                    elif line.startswith("Query:"):
+                        query = line.strip()[7:]  # Ottiene la query rimuovendo "Query:" dall'inizio della riga
+                        print(description)
+                        print("Query:", query)
+                        print()
+                        if num % 2 == 0 and num < 9:  # Verifica se il numero nella descrizione è pari
+                            cerca_avanzata(query, ix_imdb)  # Esegue la ricerca avanzata con la query specificata nel benchmark
+                        else:
+                            cerca(query, ix_imdb)  # Esegue la ricerca standard con la query specificata nel benchmark
+                        print()
+                        num = num + 1
+        except FileNotFoundError:
+            print("File benchmark.txt non trovato.")
+        except Exception as e:
+            print("Si è verificato un errore durante l'elaborazione del file benchmark.txt:", e)
 
     # Se è presente il flag 'advanced' tra gli argomenti della riga di comando, esegui la ricerca avanzata
     elif 'advanced' in sys.argv:

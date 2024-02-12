@@ -1,39 +1,39 @@
 1)
-Descrizione: query semplice
-Query: bird box
+Descrizione: (Motore di ricerca semplice) Ricerca della singola parola "candy" all'interno del titolo o della descrizione
+Query: candy
 
 2)
-Descrizione: query basata su un campo specifico
-Query: TITLE:dune
+Descrizione: (Motore di ricerca avanzato) Ricerca di una parola simile a "candy" all'interno del titolo o della descrizione
+Query: candy
 
 3)
-Descrizione: presente solo in IMBd
-Query: Il cigno nero
+Descrizione: (Motore di ricerca semplice) Ricerca della parola "thief" nei film usciti dopo il 1990
+Query: thief AND YEAR:>1990
 
 4)
-Descrizione: ricerca di un elemento presente in entrambi i siti, avviene una fusione delle informazioni
-Query: avatar
+Descrizione: (Motore di ricerca avanzato) Ricerca di una parola simile "thief" nei film usciti dopo il 1990
+Query: thief AND YEAR:>1990
 
 5)
-Descrizione: query generica per cercare film inerenti, anche se non contengono la parola nel titolo
-Query: zombie
+Descrizione: (Motore di ricerca semplice) Ricerca della parola "apocalypse" che non restituisce risultati
+Query: apocalypse
 
 6)
-Descrizione: query con 2 condizioni che devono essere entrambe rispettate
-Query: TITLE:after AND YEAR:2021
+Descrizione: (Motore di ricerca avanzato) Ricerca di parole simili a "apocalypse" che restituiscono risultati
+Query: apocalypse
 
 7)
-Descrizione: cerca film che nel titolo contiene una parola che inizia con "kill"
-Query: TITLE:*kill*
+Descrizione: (Motore di ricerca semplice) Ricerca della parola Wonka all'interno del titolo
+Query: TITLE:Wonka
 
 8)
-Descrizione: query dove un termine è il doppio più importante rispetto gli altri
-Query: mermaid^2 princess
+Descrizione: (Motore di ricerca avanzato) Ricerca delle parole simili a "Wonka"
+Query: TITLE:Wonka
 
 9)
-Descrizione: query dei film della Marvel usciti dopo il 2015 
-Query: YEAR:>2015 AND marvel
+Descrizione: (Motore di ricerca semplice) Ricerca tramite regex i film che hanno la parte di parola "americ"
+Query: americ*
 
 10)
-Descrizione: query sbagliata, se non si è sicuri della correttezza del termine da cercare è sufficente inserire il carattere '~', in questo caso il termine corretto sarebbe stato "cloverfield"
-Query: cloverfild~
+Descrizione: (Motore di ricerca semplice) Ricerca della parola "armagedon" con un errore 
+Query: armagedon~
